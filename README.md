@@ -10,6 +10,10 @@
 * **matplotlib==3.7.2** https://matplotlib.org/
 
 # ΑΡΧΕΙΑ 
-Data -> ctr_limits.csv ## limits of simulator
-Dara-> expert_dataset.csv ## the dataset
+Data &#8594; ctr_limits.csv ## limits of simulator
+Dara &#8594; expert_dataset.csv ## the dataset
 
+
+
+# Diagram for nn
+![image](https://github.com/annaskar/MujocoHand_sign_language/assets/69804667/692da970-780e-4e47-a6d5-5fb125e3e62c)
