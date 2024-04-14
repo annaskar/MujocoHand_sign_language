@@ -1,7 +1,7 @@
 # MujocoHand_sign_language
 
 
-# requirements
+# Requirements
 * **python==3.10 || 3.12** https://www.python.org/downloads/release/python-390/
 * **mujoco=2.3.7** https://github.com/deepmind/mujoco
 * **tensorflow==2.9.1** https://www.tensorflow.org/install
@@ -10,3 +10,6 @@
 * **matplotlib==3.7.2** https://matplotlib.org/
 
 # ΑΡΧΕΙΑ 
+Data -> ctr_limits.csv ## limits of simulator
+Dara-> expert_dataset.csv ## the dataset
+
