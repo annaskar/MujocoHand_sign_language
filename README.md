@@ -10,14 +10,14 @@
 * **matplotlib==3.7.2** https://matplotlib.org/
 
 # Files 
-Data &#8594; ctr_limits.csv ## limits of simulator <br>
-Data &#8594; expert_dataset.csv ## the dataset       <br>
-environments &#8594; shadowhand.py ## control the simulator . <br>
-models &#8594; tf  &#8594; nn.py ## the neural network structure  <br>
-objects  &#8594; shadow_hand ## there are all the scenes of mujoco. <br>
-utils  &#8594; dataset.py ## the dataset in with hot encoding . <br>
-train_nn.py ## run neural network and after run the simulator . <br>
-pyopengl.py ## controlling  between simulator and the user . <br>
+Data &#8594; ctr_limits.csv [ limits of simulator] <br>
+Data &#8594; expert_dataset.csv [ the dataset ]      <br>
+environments &#8594; shadowhand.py [ control the simulator ]. <br>
+models &#8594; tf  &#8594; nn.py [ the neural network structure]  <br>
+objects  &#8594; shadow_hand [ there are all the scenes of mujoco.] <br>
+utils  &#8594; dataset.py [ the dataset in with hot encoding . ]<br>
+train_nn.py [ run neural network and after run the simulator .] <br>
+pyopengl.py [ controlling  between simulator and the user .] <br>
 
 
 
