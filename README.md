@@ -19,18 +19,25 @@ utils  &#8594; dataset.py [ the dataset in with hot encoding . ]<br>
 train_nn.py [ run neural network and after run the simulator .] <br>
 pyopengl.py [ controlling  between simulator and the user .] <br>
 
+# Data
+Inputs are : <br>
+* Dataset random movements .The final state of each movement which is represent at the table below <br>
+![image](https://github.com/annaskar/MujocoHand_sign_language/assets/69804667/14c1a6d5-ce64-4e64-83e0-9f2c9c67bdd9) <br>
+* key from 1 to 9 which is represent a movement
+Both of them are encoding with one hot encoding .
+
 
 
  <br> </br>
 # Neural network
-The proposal of this Neural Network is to predict the 20 actuators by using the sign(final state of sign language) and the order(keys from keyboard)
+The aim of this Neural Network is to predict the 20 actuators by using the sign(final state of sign language) and the order(keys from keyboard)
  <br> </br>
-![image](https://github.com/annaskar/MujocoHand_sign_language/assets/69804667/2febac40-23a9-4c0a-babd-33b54b16e587)
+![image](https://github.com/annaskar/MujocoHand_sign_language/assets/69804667/2febac40-23a9-4c0a-babd-33b54b16e587)<br>
 For that the neural network uses Adam optimizer - which is a improvemnt of Gradient Descent algorithm -, and Mean Absolute Error function in order to evaluate prediction error.
  <br> </br>
 
-![image](https://github.com/annaskar/MujocoHand_sign_language/assets/69804667/50133716-fbc8-44a2-8e74-c2178439e193)
-After some experimentation the ideal values ​​for batch size is 10 and the seed for this network .
+![image](https://github.com/annaskar/MujocoHand_sign_language/assets/69804667/50133716-fbc8-44a2-8e74-c2178439e193) <br>
+After some experimentation the ideal values ​​for batch size is 10 for this network .
 
  <br> </br>
 
