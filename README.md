@@ -17,4 +17,5 @@ Data &#8594; expert_dataset.csv ## the dataset       <br>
 
 
 # Diagram for nn
-![image](https://github.com/annaskar/MujocoHand_sign_language/assets/69804667/692da970-780e-4e47-a6d5-5fb125e3e62c)
+![image](https://github.com/annaskar/MujocoHand_sign_language/assets/69804667/2febac40-23a9-4c0a-babd-33b54b16e587)
+
