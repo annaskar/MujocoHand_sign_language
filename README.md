@@ -69,6 +69,7 @@ Both of them are encoding with one hot encoding .<br>
  <br> </br>
 # Neural network
 The aim of this Neural Network is to predict the 20 actuators by using the sign(final state of sign language) and the order(keys from keyboard)
+This neural network utilizes 2 hidden layers and concatenates .  Each prediction corresponds to a 20-value vector representing the edge of the actuators.
  <br> </br>
 ![image](https://github.com/annaskar/MujocoHand_sign_language/assets/69804667/2febac40-23a9-4c0a-babd-33b54b16e587)<br>
 For that the neural network uses Adam optimizer - which is a improvemnt of Gradient Descent algorithm -, and Mean Absolute Error function in order to evaluate prediction error.
