@@ -17,9 +17,9 @@ one_hot_signs = True
 num_outputs = dataset.NUM_ACTUATORS
 learning_rate = 0.001
 loss_fn = 'MAE'
-epochs = 100
+epochs = 1000
 batch_size = 10
-seed = 20
+seed = 0
 
 model_checkpoint_directory = 'checkpoints/nn'
 shadow_hand_xml_filepath = 'objects/shadow_hand/scene_left.xml'
