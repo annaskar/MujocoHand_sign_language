@@ -30,21 +30,6 @@ ONE_HOT_ORDERS = {
 NUM_ACTUATORS = 20 #total of hand controlers
 
 
-# Generates expert dataset by saving expert transitions [sign, order, ctrl]
-def generate_expert_dataset(transition_history: list[str, int, np.ndarray], dataset_filepath: str):
-    ctrl_features = [f'ctrl_{i + 1}' for i in range(NUM_ACTUATORS)]
-    dataset_features = ['sign', 'order'] + ctrl_features
-
-    with open(dataset_filepath, 'w', encoding='utf-8', newline='') as csvfile:
-        writer = csv.writer(csvfile, delimiter=',')
-        writer.writerow(dataset_features)
-
-        for transition in transition_history:
-            sign, order = transition[0: 2]
-            ctrl = transition[2].tolist()
-            row = [sign, order] + ctrl
-            writer.writerow(row)
-
 
 # Reads dataset x, y with x --> (sign, order) y --> (ctrl)
 def read_dataset(dataset_filepath: str, one_hot: bool) -> (dict[str, np.ndarray], np.ndarray):
