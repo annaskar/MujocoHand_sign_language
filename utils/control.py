@@ -3,18 +3,6 @@ import json
 import numpy as np
 
 
-# Reads the control transitions for each sign
-def read_sign_transitions(json_filepath: str) -> dict[str, list[np.ndarray]]:
-    signs = {}
-    with open(json_filepath, mode='r', encoding='utf-8') as jsonfile:
-        jsonobj = json.load(jsonfile)
-
-        for sign, ctrl_list in jsonobj.items():
-            ctrl_transitions = [np.float32(ctrl) for ctrl in ctrl_list]
-            signs[sign] = ctrl_transitions
-    return signs
-
-
 # Reads the control limits (low position, high position) for each actuator
 def read_ctrl_limits(csv_filepath: str) -> list[np.ndarray]:
     ctrl_limits = []

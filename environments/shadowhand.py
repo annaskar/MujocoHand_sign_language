@@ -31,15 +31,7 @@ class ShadowHandEnv(gym.Env):
             'order': gym.spaces.Box(low=0.0, high=1.0, shape=order_shape, dtype=np.float32)
         })
 
-    # Computes reward as 1/dist, where dist is the Euclidean distance between predicted ctrl and target ctrl
-    def _compute_reward(self, pred_ctrl: np.ndarray) -> float:
-        target_ctrl = self._target_ctrls[self._timestep]
-        dist = np.linalg.norm(target_ctrl - pred_ctrl)
 
-        if dist == 0.0:
-            return 100
-        else:
-            return 1.0/dist
 
     # Increments environment timestep
     def _increment_timestep(self) -> bool:

@@ -10,8 +10,8 @@ class NeuralNetwork(Model):
             num_outputs: int,
             learning_rate: float = 0.001,
             loss_fn: str = 'MAE',
-            epochs: int = 100,
-            batch_size: int = 8
+            epochs: int = 10,
+            batch_size: int = 1
     ):
         self._sign_input_shape = input_shapes['sign']
         self._order_input_shape = input_shapes['order']
@@ -35,16 +35,19 @@ class NeuralNetwork(Model):
 
         self._model.save(checkpoint_directory)
 
+
     def build(self, summary: bool):
         i1 = tf.keras.layers.Input(shape=self._sign_input_shape, name='sign')
-        h1 = tf.keras.layers.Dense(units=1024, activation='relu', name='hidden_1')(i1)
+        h1 = tf.keras.layers.Dense(units=1024, activation='relu', name='hidden1')(i1)
 
         i2 = tf.keras.layers.Input(shape=self._order_input_shape, name='order')
-        h2 = tf.keras.layers.Dense(units=1024, activation='relu', name='hidden_2')(i2)
+        h2 = tf.keras.layers.Dense(units=1024, activation='relu', name='hidden2')(i2)
 
-        h = tf.keras.layers.Concatenate(name='h1h2_concat', axis=-1)([h1, h2])
+        h = tf.keras.layers.Concatenate(name='h1h2Concat', axis=-1)([h1, h2])
         h = tf.keras.layers.Dense(units=512, activation='relu', name='hidden_final')(h)
         y = tf.keras.layers.Dense(units=self._num_outputs, name='outputs')(h)
+
+
 
         self._model = tf.keras.Model(inputs=[i1, i2], outputs=y, name='neural-network')
 
@@ -73,8 +76,13 @@ class NeuralNetwork(Model):
 
         if sign_vector.ndim == 1:
             x = {'sign': np.expand_dims(a=sign_vector, axis=0), 'order': np.expand_dims(a=order_vector, axis=0)}
+            #print('x',x)
             next_ctrl = self._model.predict(x)[0]
+
+          #  print("nctr",next_ctrl)
         else:
             x = {'sign': sign_vector, 'order': order_vector}
+            print("x",self._model.predict(x))
             return self._model.predict(x)
+
         return next_ctrl

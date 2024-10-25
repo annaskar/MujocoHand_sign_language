@@ -2,32 +2,37 @@ import csv
 import numpy as np
 
 ONE_HOT_SIGNS = {
-    'rest': np.float32([1, 0, 0, 0, 0, 0, 0, 0, 0, 0]),
-    'one': np.float32([0, 1, 0, 0, 0, 0, 0, 0, 0, 0]),
-    'two': np.float32([0, 0, 1, 0, 0, 0, 0, 0, 0, 0]),
-    'three': np.float32([0, 0, 0, 1, 0, 0, 0, 0, 0, 0]),
-    'four': np.float32([0, 0, 0, 0, 1, 0, 0, 0, 0, 0]),
-    'five': np.float32([0, 0, 0, 0, 0, 1, 0, 0, 0, 0]),
-    'six': np.float32([0, 0, 0, 0, 0, 0, 1, 0, 0, 0]),
-    'seven': np.float32([0, 0, 0, 0, 0, 0, 0, 1, 0, 0]),
-    'eight': np.float32([0, 0, 0, 0, 0, 0, 0, 0, 1, 0]),
-    'nine': np.float32([0, 0, 0, 0, 0, 0, 0, 0, 0, 1])
+    'rest': np.float32([1, 0, 0, 0, 0, 0, 0, 0, 0, 0,0,0]),
+    'one': np.float32([0, 1, 0, 0, 0, 0, 0, 0, 0, 0,0,0]),
+    'two': np.float32([0, 0, 1, 0, 0, 0, 0, 0, 0, 0,0,0]),
+    'three': np.float32([0, 0, 0, 1, 0, 0, 0, 0, 0, 0,0,0]),
+    'four': np.float32([0, 0, 0, 0, 1, 0, 0, 0, 0, 0,0,0]),
+    'five': np.float32([0, 0, 0, 0, 0, 1, 0, 0, 0, 0,0,0]),
+    'six': np.float32([0, 0, 0, 0, 0, 0, 1, 0, 0, 0,0,0]),
+    'seven': np.float32([0, 0, 0, 0, 0, 0, 0, 1, 0, 0,0,0]),
+    'eight': np.float32([0, 0, 0, 0, 0, 0, 0, 0, 1, 0,0,0]),
+    'nine': np.float32([0, 0, 0, 0, 0, 0, 0, 0, 0, 1,0,0]),
+    'a': np.float32([0, 0, 0, 0, 0, 0, 0, 0, 0,0, 1,0]),
+    'b': np.float32([0, 0, 0,0,0, 0, 0, 0, 0, 0,0,1])
 }
 
 ONE_HOT_ORDERS = {
-    0: np.float32([1, 0, 0, 0, 0, 0, 0, 0, 0, 0]),
-    1: np.float32([0, 1, 0, 0, 0, 0, 0, 0, 0, 0]),
-    2: np.float32([0, 0, 1, 0, 0, 0, 0, 0, 0, 0]),
-    3: np.float32([0, 0, 0, 1, 0, 0, 0, 0, 0, 0]),
-    4: np.float32([0, 0, 0, 0, 1, 0, 0, 0, 0, 0]),
-    5: np.float32([0, 0, 0, 0, 0, 1, 0, 0, 0, 0]),
-    6: np.float32([0, 0, 0, 0, 0, 0, 1, 0, 0, 0]),
-    7: np.float32([0, 0, 0, 0, 0, 0, 0, 1, 0, 0]),
-    8: np.float32([0, 0, 0, 0, 0, 0, 0, 0, 1, 0]),
-    9: np.float32([0, 0, 0, 0, 0, 0, 0, 0, 0, 1])
+    0: np.float32([1, 0, 0, 0, 0, 0, 0, 0, 0, 0,0,0]),
+    1: np.float32([0, 1, 0, 0, 0, 0, 0, 0, 0, 0,0,0]),
+    2: np.float32([0, 0, 1, 0, 0, 0, 0, 0, 0, 0,0,0]),
+    3: np.float32([0, 0, 0, 1, 0, 0, 0, 0, 0, 0,0,0]),
+    4: np.float32([0, 0, 0, 0, 1, 0, 0, 0, 0, 0,0,0]),
+    5: np.float32([0, 0, 0, 0, 0, 1, 0, 0, 0, 0,0,0]),
+    6: np.float32([0, 0, 0, 0, 0, 0, 1, 0, 0, 0,0,0]),
+    7: np.float32([0, 0, 0, 0, 0, 0, 0, 1, 0, 0,0,0]),
+    8: np.float32([0, 0, 0, 0, 0, 0, 0, 0, 1, 0,0,0]),
+    9: np.float32([0, 0, 0, 0, 0, 0, 0, 0, 0, 1,0,0]),
+    'a': np.float32([0, 0, 0, 0, 0, 0, 0, 0, 0, 0,1,0]),
+    'b': np.float32([0, 0, 0, 0, 0, 0, 0, 0, 0, 0,0,0,1])
 }
 
 NUM_ACTUATORS = 20 #total of hand controlers
+
 
 
 
@@ -54,6 +59,13 @@ def read_dataset(dataset_filepath: str, one_hot: bool) -> (dict[str, np.ndarray]
             signs.append(sign)
             orders.append(order)
             ctrls.append(ctrl)
+
+    print(f'Expected size: {len(signs[0])}')
+    size = len(signs[0])
+    for i, s in enumerate(signs):
+        if size != len(s):
+            print('Mismatch in line:', i, 'Size of', s, 'is', {len(s)})
+
     x = {'sign': np.array(signs), 'order': np.float32(orders)}
     y = np.float32(ctrls)
     return x, y

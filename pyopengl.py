@@ -115,6 +115,12 @@ class GLFWSimulator:
             elif key == glfw.KEY_9:
                 self._sign = 'nine'
                 self._hand_controller.set_sign(sign=self._sign)
+            elif key == glfw.KEY_A:
+                self._sign = 'a'
+                self._hand_controller.set_sign(sign=self._sign)
+            elif key == glfw.KEY_B:
+                self._sign = 'b'
+                self._hand_controller.set_sign(sign=self._sign)
 
     # Handles mouse-click events to move/rotate camera
     def _mouse_button_cb(self, window, button, act, mods):

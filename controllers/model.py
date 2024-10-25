@@ -1,6 +1,7 @@
 import numpy as np
 from models.model import Model
 from controllers.controller import Controller
+import pandas as pd  # Για αποθήκευση σε CSV
 
 
 class ModelController(Controller):
@@ -34,6 +35,13 @@ class ModelController(Controller):
             )
 
             assert next_ctrl.ndim == 1 and next_ctrl.shape[0] == self._num_actuators
+            self.save_control_output(next_ctrl)
         else:
             next_ctrl = None
         return next_ctrl
+
+    def save_control_output(self, control_output: np.ndarray):
+        # Δημιουργία DataFrame και αποθήκευση σε CSV
+        df = pd.DataFrame(control_output.reshape(1, -1),
+                          columns=[f'Actuator_{i + 1}' for i in range(self._num_actuators)])
+        df.to_csv('control_output.csv', mode='a', header=False, index=False)

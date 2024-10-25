@@ -9,16 +9,18 @@ from models.tf.nn import NeuralNetwork
 from pyopengl import GLFWSimulator
 from utils import control
 from utils import dataset
+import keras
 
 
-dataset_filepath = 'data/expert_dataset.csv'
-checkpoint_directory = 'checkpoints/nn'
-one_hot_signs = True
-num_outputs = dataset.NUM_ACTUATORS
-learning_rate = 0.001
-loss_fn = 'MAE'
-epochs = 1000
-batch_size = 10
+
+dataset_filepath = 'data/expert_dataset.csv' # data set with final position-target-
+checkpoint_directory = 'checkpoints/nn' #save βαρη νευρωνικου
+one_hot_signs = True # encoding  in dataset
+num_outputs = dataset.NUM_ACTUATORS  # number of simulator control
+learning_rate = 0.001 #
+loss_fn = 'MAE' #Loss function mean absolute error https://pytorch.org/docs/stable/generated/torch.nn.L1Loss.html#torch.nn.L1Loss
+epochs = 10
+batch_size = 3
 seed = 0
 
 model_checkpoint_directory = 'checkpoints/nn'
@@ -30,22 +32,23 @@ sim_verbose = True
 
 
 
-summary = False
+summary = True
 print_test_predictions = False
 plot_performance = True
 
 
 def main():
     print("this is num of out")
-    print(num_outputs)
+
     tf.random.set_seed(seed=seed)
     np.random.seed(seed=seed)
     random.seed(seed)
 
     x, y = dataset.read_dataset(dataset_filepath=dataset_filepath, one_hot=one_hot_signs)
 
-    print('Train Dataset:', y.shape, x['sign'].shape, x['order'].shape)
 
+   # print('Train Dataset:', y.shape, x['sign'].shape, x['order'].shape)
+    #print('order',x['order'])
 
 
     model = NeuralNetwork(
@@ -66,6 +69,7 @@ def main():
         for i in range(y.shape[0]):
             print(f'i: {i + 1}, y_pred: {y_pred[i]}\tactual: {y[i]}')
 
+
     if plot_performance:
         plt.plot(loss, label='Loss')
         plt.title('Neural Network Performance')
@@ -76,6 +80,9 @@ def main():
 
     model = NeuralNetwork(input_shapes={'sign': (), 'order': ()}, num_outputs=-1)
     model.load(checkpoint_directory=model_checkpoint_directory + "saved_model.keras")
+
+
+
 
     ctrl_limits = control.read_ctrl_limits(csv_filepath=ctrl_limits_filepath)
     hand_controller = ModelController(
