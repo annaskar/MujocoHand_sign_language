@@ -23,7 +23,9 @@ Data &#8594; expert_dataset.csv ## the dataset       <br>
 
 
 # Diagram for Dnn
-The application of a Deep Neural Network (DNN) in the Shadow Hand system aims to control the extremities of a robotic arm to perform sign language gestures. This DNN is trained and applied to generate predictions for the robotic hand’s actuators, based on input data such as gestures and command sequences. 
+The application of a Deep Neural Network (DNN) in the Shadow Hand system aims to control the extremities of a robotic arm to perform sign language gestures. 
+This DNN is trained and applied to generate predictions for the robotic hand’s actuators, based on input data such as gestures and command sequences. 
+
 ![image](https://github.com/user-attachments/assets/7e6012cc-b020-48d7-994f-c48b66d9e3fe)
 
 
