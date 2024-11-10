@@ -1,5 +1,11 @@
 # MujocoHand_sign_language
 
+This project focuses on sign language for the numbers one through nine, using MuJoCo.
+
+![image](https://github.com/user-attachments/assets/d7c96f39-a380-4b8d-aded-b40506ca8395)
+
+
+
 
 # Requirements
 * **python==3.10 || 3.12** https://www.python.org/downloads/release/python-390/
@@ -16,5 +22,8 @@ Data &#8594; expert_dataset.csv ## the dataset       <br>
 
 
 
-# Diagram for nn
-![image](https://github.com/annaskar/MujocoHand_sign_language/assets/69804667/692da970-780e-4e47-a6d5-5fb125e3e62c)
+# Diagram for Dnn
+The application of a Deep Neural Network (DNN) in the Shadow Hand system aims to control the extremities of a robotic arm to perform sign language gestures. This DNN is trained and applied to generate predictions for the robotic hand’s actuators, based on input data such as gestures and command sequences. 
+![image](https://github.com/user-attachments/assets/7e6012cc-b020-48d7-994f-c48b66d9e3fe)
+
+
